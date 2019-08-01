@@ -8,7 +8,7 @@ var XTERM_COLORS = eval(atob(B64ENCODED_XTERM_COLORS));
 var HEX_COLOR_BLACK = '#000';
 var DEFAULT_ANSI_COLOR_CODE = 7; // @w
 
-var XTERM_COLOR_ALIAS_INT_MAP = {
+var XTERM_ANSI_COLORS_MAP = {
     ' ' : 0, 'r' : 1, 'g' :  2, 'y' :  3, 'b' :  4, 'm' :  5, 'c' :  6, 'w' : 7,
     'D' : 8, 'R' : 9, 'G' : 10, 'Y' : 11, 'B' : 12, 'M' : 13, 'C' : 14, 'W' : 15
 };
@@ -23,8 +23,11 @@ function getXtermColor(colorIntCode) {
 }
 
 function getHexColorCode(xtermColorCode) {
+    if (typeof(xtermColorCode) === 'string' && xtermColorCode.startsWith('x')) {
+        xtermColorCode = xtermColorCode.substr(1);
+    }
 
-    var colorIntCode = parseInt(xtermColorCode) || XTERM_COLOR_ALIAS_INT_MAP[xtermColorCode] || DEFAULT_ANSI_COLOR_CODE;
+    var colorIntCode = parseInt(xtermColorCode) || XTERM_ANSI_COLORS_MAP[xtermColorCode] || DEFAULT_ANSI_COLOR_CODE;
     var xtermColor = getXtermColor(colorIntCode);
     var hexColorCode = xtermColor.hexString;
 
