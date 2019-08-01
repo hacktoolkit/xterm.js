@@ -1,9 +1,12 @@
 # xterm.js
-A drop-in JavaScript module to colorize Xterm output on your webpages. Absolutely no external dependencies required!
+A drop-in JavaScript module to colorize Xterm output (both ANSI 16 + 256 colors) on your webpages. Absolutely no external dependencies required!
 
 # Live Demo
 
-A demo is worth a thousand words, so see a live demo: <https://l33t-xyz.github.io/xterm.js/demo.html>
+A demo is worth a thousand words.
+
+- **Basic Demo**: [See a live demo](https://l33t-xyz.github.io/xterm.js/demo.html) ([source](https://github.com/l33t-xyz/xterm.js/blob/master/demo.html)).
+- **[Visual regression test with ANSI 16 + 256 colors](https://l33t-xyz.github.io/xterm.js/test.html)** ([source](https://github.com/l33t-xyz/xterm.js/blob/master/test.html)).
 
 # How It Works
 
