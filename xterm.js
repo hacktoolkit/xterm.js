@@ -6,11 +6,13 @@ var B64ENCODED_XTERM_COLORS = 'W3siY29sb3JJZCI6MCwiaGV4U3RyaW5nIjoiIzAwMDAwMCIsI
 
 var XTERM_COLORS = eval(atob(B64ENCODED_XTERM_COLORS));
 var HEX_COLOR_BLACK = '#000';
+var DEFAULT_ANSI_COLOR_CODE = 7; // @w
 
 var XTERM_COLOR_ALIAS_INT_MAP = {
     ' ' : 0, 'r' : 1, 'g' :  2, 'y' :  3, 'b' :  4, 'm' :  5, 'c' :  6, 'w' : 7,
     'D' : 8, 'R' : 9, 'G' : 10, 'Y' : 11, 'B' : 12, 'M' : 13, 'C' : 14, 'W' : 15
 };
+
 
 function getXtermColor(colorIntCode) {
     var color = null;
@@ -21,10 +23,10 @@ function getXtermColor(colorIntCode) {
 }
 
 function getHexColorCode(xtermColorCode) {
-    var colorIntCode = parseInt(xtermColorCode) || XTERM_COLOR_ALIAS_INT_MAP[xtermColorCode];
 
+    var colorIntCode = parseInt(xtermColorCode) || XTERM_COLOR_ALIAS_INT_MAP[xtermColorCode] || DEFAULT_ANSI_COLOR_CODE;
     var xtermColor = getXtermColor(colorIntCode);
-    var hexColorCode = xtermColor ? xtermColor.hexString : '#fff';
+    var hexColorCode = xtermColor.hexString;
 
     return hexColorCode;
 }
@@ -32,11 +34,26 @@ function getHexColorCode(xtermColorCode) {
 document.addEventListener('DOMContentLoaded', function() {
     // converts one single line of Xterm text to HTML
     function xterm2Html(line) {
-        var htmlLine = line.replace(/@((?:[bBrRgGyYcCmMwWD])|(?:x\d{1,3}))([^@]*)/g, function(text, xtermColorCode, coloredPhrase) {
-            var hexColorCode = getHexColorCode(xtermColorCode);
+        var wrapLine = function(hexColorCode, coloredPhrase) {
             var html = '<span style="background-color: ' + HEX_COLOR_BLACK + '; color: ' + hexColorCode + ';">' + coloredPhrase + '</span>';
             return html;
-        });
+        };
+
+        var regex = /@((?:[bBrRgGyYcCmMwWD])|(?:x\d{1,3}))([^@]*)/g;
+
+        var htmlLine;
+
+        if (regex.test(line)) {
+            htmlLine = line.replace(regex, function(text, xtermColorCode, coloredPhrase) {
+                var hexColorCode = getHexColorCode(xtermColorCode);
+                var html = wrapLine(hexColorCode, coloredPhrase);
+                return html;
+            });
+        } else {
+            // no color codes detected on this line
+            var hexColorCode = getHexColorCode(DEFAULT_ANSI_COLOR_CODE);
+            htmlLine = wrapLine(hexColorCode, line);
+        }
 
         return htmlLine;
     }
@@ -69,9 +86,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function init() {
-        formatXtermWidgets();
+    function exports() {
+        window.formatXtermWidgets = formatXtermWidgets;
     }
 
+    function init() {
+        formatXtermWidgets();
+
+    }
+
+    exports();
     init();
 });

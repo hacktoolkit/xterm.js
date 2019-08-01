@@ -4,11 +4,28 @@
     <style type="text/css">
       html, body {
           background-color: #000;
+          color: #fff;
+      }
+
+      #xterm_input {
+          font-family: 'Courier New';
       }
     </style>
+
+    <script type="text/javascript">
+      function convert() {
+          var xtermInput = document.getElementById('xterm_input');
+          var xtermOutput = document.getElementById('xterm_output');
+
+          xtermOutput.innerHTML = xtermInput.value;
+          formatXtermWidgets();
+      }
+    </script>
+
   </head>
 
   <body>
+    <h1>Live Demo of <code>xterm.js</code></h1>
 
     <code class="xterm">
     @g[1] Your flame @G<@W*><-:-><*@G> @YSLAUGHTERS @G<@W*><-:-><*@G>@w @gan antlion! @R[358]
@@ -22,6 +39,14 @@
     @cThe Fallen Soldier gives you @Y62@c gold coins for the charred corpse of an antlion.
     </code>
 
-    <script type="text/javascript" src="//l33t-xyz.github.io/xterm.js/xterm.js"></script>
+    <h2>Give it a try!</h2>
+
+    <h3>Your Input</h3>
+    <textarea id="xterm_input" cols="80" rows="20" onInput="convert();"></textarea>
+
+    <h3>Output</h3>
+    <code id="xterm_output" class="xterm"></code>
+
+    <script type="text/javascript" src="xterm.js"></script>
   </body>
 </html>
