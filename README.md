@@ -27,12 +27,13 @@ Like magic, it turns simple HTML markup using the `<code>` tag with the `xterm` 
 
 # Get Started in under 30 seconds
 
-It's as easy as 1, 2, 3!
+**It's as easy as 1, 2, 3!**
 
 1. Wrap all Xterm output you would like to format as colorized with:  
     `<code class="xterm">...</code>`.
 2. Include this line before the closing `</body>` tag of your HTML document:  
-    `<script type="text/javascript" src="//l33t-xyz.github.io/xterm.js/xterm.js"></script>`
+    `<script type="text/javascript" src="//l33t-xyz.github.io/xterm.js/xterm.js"></script>`  
+    (Alternatively, if you would like, [download the file `xterm.js`](https://raw.githubusercontent.com/l33t-xyz/xterm.js/master/xterm.js) and upload it to your webserver to host it locally.)
 3. Profit!
 
 # Authors
