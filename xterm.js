@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         for (var i=0; i < lines.length; ++i) {
             var line = lines[i];
+            line = line.replace(' ', '&nbsp;');
             var htmlLine = xterm2Html(line);
             htmlLines.push(htmlLine);
         }
