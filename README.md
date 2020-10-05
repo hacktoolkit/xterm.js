@@ -41,7 +41,7 @@ Like magic, it turns simple HTML markup using the `<code>` tag with the `xterm` 
 
 # Authors
 
-Created by Jonathan Tsai ([@jontsai](http://github.com/jontsai)), maintained by [Hacktoolkit](https://github.com/hacktoolkit) and [L33t.xyz](https://github.com/l33t-xyz).
+Created by [Hacktoolkit](https://github.com/hacktoolkit) and maintained by [L33t.xyz](https://github.com/l33t-xyz).
 
 # Contributing
 
