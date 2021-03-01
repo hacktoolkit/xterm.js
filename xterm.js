@@ -81,12 +81,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // entry point. convert all `<code class="xterm">...</code>` widgets on page
     function formatXtermWidgets() {
-        var selector = 'code.xterm';
-        var widgets = document.querySelectorAll(selector);
+        var selectors = [
+            'code.xterm',
+            'code.language-xterm'
+        ];
 
-        for (var i=0; i < widgets.length; ++i) {
-            var widget = widgets[i];
-            formatXtermWidget(widget);
+        for (var i=0; i < selectors.length; ++i) {
+            var widgets = document.querySelectorAll(selector);
+
+            for (var j=0; j < widgets.length; ++j) {
+                var widget = widgets[j];
+                formatXtermWidget(widget);
+            }
+
         }
     }
 
