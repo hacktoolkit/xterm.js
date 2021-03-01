@@ -39,6 +39,8 @@ Like magic, it turns simple HTML markup using the `<code>` tag with the `xterm` 
     *(Alternatively, if you would like, [download the file `xterm.js`](https://raw.githubusercontent.com/l33t-xyz/xterm.js/master/xterm.js) and upload it to your webserver to host it locally.)*
 3. Profit!
 
+If you're using a preprocessor like Markdown or MDX, the `language-xterm` class also works.
+
 # Authors
 
 Created by [Hacktoolkit](https://github.com/hacktoolkit) and maintained by [L33t.xyz](https://github.com/l33t-xyz).
