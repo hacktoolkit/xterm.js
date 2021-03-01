@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
 
         for (var i=0; i < selectors.length; ++i) {
+            var selector = selectors[i];
             var widgets = document.querySelectorAll(selector);
 
             for (var j=0; j < widgets.length; ++j) {
